@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark roboto mb-0">
+    <div class="container-fluid w-30">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hide" href="#about">About</a>
+                </li>
+              
+                {% if is_admin %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Debug
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/top_anime">top_anime</a></li>
+                        <li><a class="dropdown-item" href="/search">search</a></li>
+                        <li><a class="dropdown-item" href="/user">user</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/debug_user">debug user</a></li>
+                        <li><a class="dropdown-item" href="/debug_rating">debug rating</a></li>
+                        <li><a class="dropdown-item" href="/delete_db">drop db</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                
+            </ul>
+        </div>
+    </div>
+  
+      <div class="w-40 center-w">
+          <form class="center-w d-flex" action="/search" method="post">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search_title" name="search_title">
+              <button class="btn btn-sm btn-secondary" type="submit">Search</button>
+          </form>
+      </div>
+  
+      <div class="w-30">
+          <form class="d-flex justify-content-end me-5">
+              {% if is_admin%}
+              <a href="/login" class="btn btn-outline-secondary me-1 my-1">Sign in</a>
+              <a href="/register" class="btn btn-info me-2 my-1">Sign up</a>
+              <a href="/profile" class="btn btn-outline-light me-2 my-1">Profile</a>
+              <a href="/logout" class="btn btn-outline-danger me-2 my-1">Log Out</a>        
+              {% elif is_login%}
+              <a href="/profile" class="btn btn-outline-light me-2 my-1">Profile</a>
+              <a href="/logout" class="btn btn-outline-danger me-2 my-1">Log Out</a>
+              {% else %}
+              <a href="/login" class="btn btn-outline-secondary me-1 my-1">Sign in</a>
+              <a href="/register" class="btn btn-info me-2 my-1">Sign up</a>
+              {% endif %}
+          </form>
+      </div>
+  </nav>

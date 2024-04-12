@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- carousel -->
+<div id="carouselExampleIndicators" class="carousel slide carousel-cnt mt-0" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        {% for x in range(num_carousel) %}
+            <a class="carousel-item {% if loop.index == 1 %}active{% endif %}" href="/anime/{{cnt[x]}}">
+                <div class="caption-cnt grad5">
+                    <div class="carousel-caption">
+                        <h1 class="f-thicker center-low-height">{{ list[x] }}</h3>
+                    </div>
+                </div>
+                <img class="d-block w-60" src="{{list_img[x]}}" alt="First slide">
+                <div class="img-box-shad"></div>
+            </a>
+        {% endfor %}
+    </div>
+    <a class="carousel-control-prev grad3 w-30 op-100" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="grad1"></span>
+    </a>
+    <a class="carousel-control-next grad4 w-30 op-100" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="grad1"></span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+
+<!-- Hello -->
+<div class='heading-title-container'>
+    <h1 class='roboto f'>Hello!</h1>
+</div>
+
+<!-- search -->
+<div class="ms-0 mb-5">
+    <h3 class="text-center text-white roboto">Search Title</h3>
+    <div class="">
+        <div class="w-70 center-w">
+            <form class="center-w d-flex" action="/search" method="post">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search_title" name="search_title">
+                <button class="btn btn-dark" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- card kotak -->
+<div class='heading-container'>
+    <h1 class='f-3 mb-0 ms-0 text-start'>Top Rated</h1>
+    <hr>
+
+    <div class="container-fluid mb-5">
+        <div class="row justify-content-center">
+            {% for x in range(num) %}
+            <a class="col-sm-auto align-self-center ps-0 pe-1" href="/anime/{{cnt1[x]}}">
+                <div class="card text-white border-dark bg-dark bg-opacity-10 mb-5 card-wh">
+                    <img src="{{list_img1[x]}}" class="card-img-top card-wh">
+                    <div class="card-body bg-dark text-white">
+                        <h6 class="card-title">{{ list1[x] }}</h6>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class='heading-container'>
+    <h1 class='f-3 mb-0 ms-0 text-start'>Top Popular</h1>
+    <hr>
+
+    <div class="container-fluid mb-5">
+        <div class="row justify-content-center">
+            {% for x in range(num) %}
+            <a class="col-sm-auto align-self-center ps-0 pe-1" href="/anime/{{cnt2[x]}}">
+                <div class="card text-white border-dark bg-dark bg-opacity-10 mb-5 card-wh">
+                    <img src="{{list_img2[x]}}" class="card-img-top card-wh">
+                    <div class="card-body bg-dark text-white">
+                        <h6 class="card-title">{{ list2[x] }}</h6>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class='heading-container'>
+    <h1 class='f-3 mb-0 ms-0 text-start'>For You</h1>
+    <hr>
+
+    <div class="container-fluid mb-5">
+        <div class="row justify-content-center">
+            {% for x in range(num_fy) %}
+            <a class="col-sm-auto align-self-center ps-0 pe-1" href="/anime/{{cnt3[x]}}">
+                <div class="card text-white border-dark bg-dark bg-opacity-10 mb-5 card-wh">
+                    <img src="{{list_img3[x]}}" class="card-img-top card-wh">
+                    <div class="card-body bg-dark text-white">
+                        <h6 class="card-title">{{ list3[x] }}</h6>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container-fluid mb-5">
+        <div class="row justify-content-center">
+            {% for x in range(num) %}
+            <a class="col-sm-auto align-self-center ps-0 pe-1" href="/anime/{{cnt4[x]}}">
+                <div class="card text-white border-dark bg-dark bg-opacity-10 mb-5 card-wh">
+                    <img src="{{list_img4[x]}}" class="card-img-top card-wh">
+                    <div class="card-body bg-dark text-white">
+                        <h6 class="card-title">{{ list4[x] }}</h6>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class='heading-container'>
+    <h1 class='f-3 mb-0 ms-0 text-start'>Top {{list_genre[0]}}</h1>
+    <hr>
+
+    <div class="container-fluid mb-5">
+        <div class="row justify-content-center">
+            {% for x in range(num) %}
+            <a class="col-sm-auto align-self-center ps-0 pe-1" href="/anime/{{cnt5[x]}}">
+                <div class="card text-white border-dark bg-dark bg-opacity-10 mb-5 card-wh">
+                    <img src="{{list_img5[x]}}" class="card-img-top card-wh">
+                    <div class="card-body bg-dark text-white">
+                        <h6 class="card-title">{{ list5[x] }}</h6>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class='heading-container'>
+    <h1 class='f-3 mb-0 ms-0 text-start'>Top {{list_genre[1]}}</h1>
+    <hr>
+
+    <div class="container-fluid mb-5">
+        <div class="row justify-content-center">
+            {% for x in range(num) %}
+            <a class="col-sm-auto align-self-center ps-0 pe-1" href="/anime/{{cnt6[x]}}">
+                <div class="card text-white border-dark bg-dark bg-opacity-10 mb-5 card-wh">
+                    <img src="{{list_img6[x]}}" class="card-img-top card-wh">
+                    <div class="card-body bg-dark text-white">
+                        <h6 class="card-title">{{ list6[x] }}</h6>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

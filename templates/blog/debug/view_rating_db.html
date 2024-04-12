@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}User{% endblock %}
+
+{% block content %}
+    {% for item in values %}
+        <h1>user_id: {{item.user_id}}</h1>
+        <h1>anime_id: {{item.anime_id}}</h1>
+        <h1>rating: {{item.rating}}</h1>
+        </br>
+    {% endfor %}
+{% endblock %}

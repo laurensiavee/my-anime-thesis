@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- content -->
+<section class="mx-5 mb-5 card-black">
+    <div class="mx-3">
+        <div class="my-5">
+                <h3 class="text-center text-white"><b> </b></h3>
+            </div>
+        </div>
+
+        <div class="mx-4 px-1">
+            <h1><b class="text-white">{{ details[0] }}</b></h1>
+            <div class="row g-0">
+                <div class="col-md-3">
+                    <img src="{{ details[4] }}" class="img-fluid rounded-start w-100 pe-5"alt="...">
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-8 center-v">
+                                <div class="card-body ">
+                                    <p class="card-text text-muted">{{ details[1] }} | {{ details[2] }} eps</p>
+                                    <p class="card-text">{{ details[3] }}</small></p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 center-v">
+                                    <p class="card-text text-muted text-center">Score:</p>
+                                    <h3 class="text-center">{{ details[5] }}</h3>
+                            </div>
+                            <div class="col-md-2 center-v">
+                                <p class="card-text text-muted text-center">Ranked:</p>
+                                <h3 class="text-center">{{ details[6] }}</h3>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row g-0 my-2">
+                        <div class="col-md-4">
+                            <div class="card-body card bg-transparent border-danger w-90">
+                                <div class="text-center">
+                                <p class="text-muted">Your Rate:</p>
+                                <h3 class="text-light">{{user_rate}}</h3>
+                                </div>
+                                <div>
+                                    <form method="post">
+                                        <label for="rating" class="text-muted">Enter Your Rate:</label>
+                                        <input class="form-control" type="text" id="rating" name="rating" placeholder="1-10">
+                                        <div class="text-center mt-2">
+                                            <button class="btn btn-danger btn-block w-100" type="submit">Rate</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="py-4">
+                                <a href="{{ details[11] }}" class="btn btn-secondary btn-block w-100">More Info</a>
+                            </div>
+                        </div>
+                        <div class="col-md-8 ps-4">
+                            <div class="pb-2">
+                                <h6 class="text-light">Rating count: <span class="text-muted">{{ details[7] }}</span> </h6>
+                                <h6 class="text-light">Popularity: <span class="text-muted">{{ details[8] }}</span></h6>
+                                <h6 class="text-light">Members: <span class="text-muted">{{ details[9] }}</span></h6>
+                                <h6 class="text-light">Studio: <span class="text-muted">{{ details[10] }}</span></h6>
+                            </div>
+                            <div class="">
+                                <h4 class="text-light">Synopsis:</h4>
+                                <p class="text-muted"> {{ details[12] }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- you also: -->
+                <div class="col-md-3 ps-3">
+                    <h5 class="text-secondary">If you like this, you may also like:</h5>
+
+                    {% for x in range (num) %}
+                        <a href="/anime/{{recs[x]}}">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-2">
+                                        <img src="{{ props[x][4] }}" class="img-fluid rounded-start"alt="...">
+                                    </div>
+                                    <div class="col-md-7 center-v">
+                                        <div class="card-body my-0 py-0 of-hidden">
+                                            <h7 class="card-title no-wrap">{{ props[x][0] }}</h7>
+                                            <p class="card-text text-muted no-wrap">{{ props[x][1] }} | {{ props[x][2] }} eps</p>
+                                            <p class="card-text no-wrap">{{ props[x][3] }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 center-v">
+                                        <p class="card-text text-muted text-center">Score:</p>
+                                        <h4 class="text-center">{{ props[x][5] }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

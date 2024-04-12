@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+
+<div class="m-5 p-3">
+    <div class="ctr-2a mh-center center-w" style="max-width: 350px">
+        <div class="text-center">
+            <h3 class="fw-bold font-thicc mt-3 mb-2 text-light">Edit Profile</h3>    
+        </div>
+
+        <div class="p-3" style="background-color: white">
+            {% if err_msg!="": %}
+                {% if err_msg=="ok": %}
+                    <div class="text-center bg-success opacity-50 my-1 py-1 m-3">
+                        <p class="mp-0 py-2 text-light">saved!</p>
+                    </div>
+                {% else: %}
+                    <div class="text-center bg-danger opacity-50 my-1 py-1 m-3">
+                        <p class="mp-0 py-2 text-light">{{ err_msg }}</p>
+                    </div>
+                {% endif %}
+            {% endif %}
+            
+            <form action="/edit_profile" method="post">
+                <label for="username" class="text-secondary">Username</label>
+                <input class="form-control me-2 mb-3 " type="text" id="username" name="username" value="{{ username }}">
+
+                <label for="password" class="text-secondary">Password</label>
+                <input class="form-control me-2 mb-3" type="password" id="password" name="password" value="{{ password }}">
+
+                <div class="text-center">
+                    <button class="w-100 btn btn-primary btn-block" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</br>
+</br>
+</br>
+
+{% endblock %}
